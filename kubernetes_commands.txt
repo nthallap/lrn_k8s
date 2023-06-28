@@ -79,3 +79,12 @@ kubernetes concepts : https://kubernetes.io/docs/concepts/
     kubectl rollout undo deployment/<deployment_name>  --> to revert the last changes of deployment
     kubectl set image deployment/<deployment_name> <containter_name>=<image_name>  --> to update docker image 
     kubectl describe deployment <deployment_name> --> to get the details of deployment
+
+How to unintsll kubernetes object with helm
+----------------
+helm list -A  --> list all object from all Name spaces
+helm uninstall <ojbect> -n <name-space>
+
+Delete NS in termination state
+----------
+NS=`kubectl get ns |grep Terminating | awk 'NR==1 {print $1}'` && kubectl get namespace "$NS" -o json   | tr -d "\n" | sed "s/\"finalizers\": \[[^]]\+\]/\"finalizers\": []/"   | kubectl replace --raw /api/v1/namespaces/$NS/finalize -f -
