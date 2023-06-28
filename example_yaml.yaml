@@ -1,0 +1,21 @@
+# should have single character space after : for values
+# Indentation is must
+
+# key value pair
+vegetable : tomato
+fruite : apple
+
+# lists 
+fruits:
+  - apple
+  - banana
+  - papaya
+vetables:
+  - tomato
+  - kukumber
+  - gherkin
+
+# Dictionary
+items:
+  tomato : yes
+  banana : no

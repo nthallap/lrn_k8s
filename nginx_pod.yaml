@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx3
+  labels:
+    app: nginx2
+    type: server
+    from: dockerhub
+spec:
+  containers:
+    - name: nginxdockerhub
+      image: nginx

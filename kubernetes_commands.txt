@@ -1,0 +1,81 @@
+Kubernetes commands
+===========================
+
+kubernetes concepts : https://kubernetes.io/docs/concepts/
+
+1. kubectl run
+    This command is usful to deplpy pods
+    kubectl run <pod_name> --image=<docker_image>
+    kubectl run nginx --image=nginx
+
+2.  kubectl get pod(s)
+    TO get the list of pods deployed
+    kubectl get pods
+    kubectl get pods -o wide --> to see more details about the pods
+    kubectl get po
+
+3. kubectl get events
+    to get the events happend 
+
+4. kubectl get nodes
+    to get the number of nodes in the cluster
+    kubectl gt no -o wide
+
+5. kubectl describe
+    To describe a pod to get the more details about perticular pod
+    kubectl describe <pod_name> -n <name_space>
+    kubectl describe nginx
+
+6. kubectl get logs
+    to get logs of a running pod
+    kubectl get logs <pod_name> -n <name_space>
+
+7. kubectl delete
+    kubectl delete <type_of_object> --> pod/service/secret/deployment
+    to delete any type_of_object we use above command
+    kubectl delete pod nginx
+
+8. kubectl create ns 
+    to create a name space
+    kubectl create ns <name_space>
+    kubectl create ns naga
+
+    kubectl get ns  --> to see all the namespaces
+    kubectl delete ns  --> to delete namespace
+    
+9. kubectl apply/create -f <file_name>.yaml
+    to create pod/secret/deployments....
+    ex: kubectl apply -f https://raw.githubusercontent.com/kubernetes/website/master/content/en/examples/application/nginx-app.yaml
+
+10. kubectl get replicationcontroler
+    kubectl apply/create -f <replicationcontroler>.yaml
+    kubectl get replicationcontroler
+    kubectl replace -f <replicationcontroler>.yaml --> to update replica set
+    kubectl scale --replicas=6 -f replicationcontroler.yaml
+    kubectl scale --replicas=6 replicaset <replicationcontroler_name>
+    kubectl edit replicationcontroler <replicationcontroler_name> --> to modify a rplicaset config 
+
+11. kubectl get replicaset
+    to get the current replicationcontroler
+    kubectl apply/create -f <replica_set>.yaml
+    kubectl scale --replicas=7 replicationcontroller replication-nginx
+    kubectl scale --replicas=4 -f replication_controler.yaml
+    kubectl edit replicaset <replicationcontroler_name> --> to modify a rplicaset config 
+
+12. kubectl get replicationcontroller
+    to get the current replicaset
+    kubectl apply/create -f <replica_set>.yaml
+    kubectl scale --replicas=7 replicationcontroller replication-nginx
+    kubectl scale --replicas=4 -f replication_controler.yaml
+
+13. kubectl get all
+    to get the all instances of kubernetes
+
+14. kubectl create -f <deploy_yaml>.yaml
+    kubectl get deployment   --> to get the list of deployments
+    kubectl create/set -f <deploy_yaml>.yaml  --> to apply latest change in yaml file
+    kubectl rollout status deployment/<deployment_name> --> to check the status of deployment
+    kubectl rollout history deployment/<deployment_name>  --> to check the history of deployment
+    kubectl rollout undo deployment/<deployment_name>  --> to revert the last changes of deployment
+    kubectl set image deployment/<deployment_name> <containter_name>=<image_name>  --> to update docker image 
+    kubectl describe deployment <deployment_name> --> to get the details of deployment

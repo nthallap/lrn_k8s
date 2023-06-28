@@ -1,0 +1,17 @@
+Steps to perform both master and worker:
+	1. update repository
+	2. Trun off Swap space
+	3. update hostname, hosts and set static ip
+	4. install openssh and docker
+	5. install kubeadm, kubelet, kubectl
+	
+Setps to perform only at master:
+	1. initiate kubernetes cluster
+	2. install pod network
+	3. setup kubernetes dash board
+	
+Setps to perform only at worker:
+	1. Join the Cluster
+	
+
+	
