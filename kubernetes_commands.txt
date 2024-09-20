@@ -1,6 +1,49 @@
 Kubernetes commands
 ===========================
 
+kubernetes commands syntax
+
+kubectl [command] [type] [name] [flags]
+
+commands expamles:
+create, get, describe, delete, log, exec, edit, run, apply, scale ...
+type:
+pod(s)------> po
+deployment(s) ---------> deploye
+replicaset(s) ---------> rs
+replicationcontroler(s) --------------> rc
+service(s) ------> svc
+deamonset(s) -------> ds
+namespace(s) -----------> ns
+persistentvolume(s)---------> pv
+persistentvolumeclaim(s) ---------> pvc
+jobs(s)
+cronjob(s)
+
+
+api version for kind:
+-------------------
+Pod: v1
+Service: v1
+ConfigMap: v1
+Secret: v1
+PersistentVolume: v1
+PersistentVolumeClaim: v1
+Namespace: v1
+
+Deployment: apps/v1
+StatefulSet: apps/v1
+DaemonSet: apps/v1
+ReplicaSet: apps/v1
+
+Job: batch/v1
+CronJob: batch/v1beta1
+Ingress: networking.k8s.io/v1
+Role: rbac.authorization.k8s.io/v1
+RoleBinding: rbac.authorization.k8s.io/v1
+ClusterRole: rbac.authorization.k8s.io/v1
+ClusterRoleBinding: rbac.authorization.k8s.io/v1
+
 kubernetes concepts : https://kubernetes.io/docs/concepts/
 
 1. kubectl run
@@ -88,3 +131,5 @@ helm uninstall <ojbect> -n <name-space>
 Delete NS in termination state
 ----------
 NS=`kubectl get ns |grep Terminating | awk 'NR==1 {print $1}'` && kubectl get namespace "$NS" -o json   | tr -d "\n" | sed "s/\"finalizers\": \[[^]]\+\]/\"finalizers\": []/"   | kubectl replace --raw /api/v1/namespaces/$NS/finalize -f -
+
+
